@@ -1,0 +1,134 @@
+---
+title: "Efficacy of EU Aid on Human Rights and Democracy: Exploring Alternate Measures"
+author: "Nikhilla Bhuvana Sundar & Adaolisa Ezekobe"
+format:
+  cmc-article-pdf:
+    fontsize: 12pt
+    margin-left: 1.5in
+    margin-right: 1.5in
+    margin-bottom: 1.2in
+    margin-top: 1.2in
+    keep-tex: true
+    fig-pos: 'tbp'
+    tbl-pos: 'tbp'
+    include-in-header: header.tex
+bibliography: bibliography.bib
+abstract: | 
+  Estimating the efficacy of foreign aid and its role in promotion of democracy and human rights developing countries is difficult due to the issue of endogeneity. We replicate the original author's findings by using the rotating presidency of the European Union as an instrument for EU aid. Additionally, we also attempt to empirically investigate the impact of aid on two alternate measures of democracy and human rights. We undertake this approach to address the underlying missingness in observations of outcome measures used by Carnegie and Marinov. Our results indicate that EU aid has a positive and significant effect on both human rights ratings and women empowerment index provided by V-Dem.
+---
+
+# Introduction
+
+Human rights and democracy are among the top priorities of domestic and international institutions around the world who make countless efforts in promotion of these fundamentals, particularly in developing nations [^1]. One such tool that is often employed in pursuit of these objectives is foreign aid. However, many studies contest the effect of aid on human rights and democracy owing to the endogenous nature of aid allocation. In other words, aid disbursements are systematically related with the recipient countries’ human rights and democracy status.
+
+[^1]: UN, OHCR.
+
+To correct for potential endogeneity of aid, researchers often adopt the instrumental variable (IV) approach.Knack [@knack2004] attempted to estimate the effect of aid on democracy using measures of recipient need and donor interest as exogenous aid instruments but found no significant impact. Savun and Tirone [@savuntirone2011] also employ two instruments, donor GDP and affinity to the US to estimate the effect of aid on civil conflict and find that aid decreases the risk of conflict. Further studies attempt to use a sole instrument to correct endogeneity. Carnegie and Marinov [@cm2017] estimate the effect of EU development aid allocations on democracy and human rights using the rotating presidency of the council of the EU as an instrument.
+
+The Carnegie and Marinov paper (hereon C&M) in particular is unique in its approach. The authors focus solely on aid from one of the largest donors of foreign aid, the EU. As such, they are able to employ an as-if random instrument in estimating the effect of aid on democracy and human rights. C&M makes use of PolityIV and CIRI indices as measures of democracy and human rights respectively. They find significant effects of aid on both measures. However, we find that about 30% of the outcome measures are missing for both the indices which can be seen in @fig-example
+
+![Missingness in Outcome Variables](figures/Missingstats.png){#fig-example width="58%"}
+
+Missingness in outcome variables often reduces precision of estimate and induces bias in results [@mavridis2014]. As an alternate approach [^2], using data from Freedom House and V-Dem, we introduce two new measures of human rights and democracy respectively to identify any variations in causal effects. The rationale for choosing the above mentioned indices are as follows: following the definition of human rights by [@delsartoandschumacher2011] as adopted by C&M, we make use of the Freedom in the World report that scores and rates countries on the following sub categorical indicators of political and civil rights: electoral processes, political pluralism, functioning of government, freedom of expression and belief and personal autonomy and individual rights. In addition, Freedom House rates the countries based on its freedom status and this helps understand if instrumental variables are useful to capture effects on outcomes that have an inherent ordering.
+
+[^2]: In many cases it might have been appropriate to impute missing values of these outcome variables. Nonetheless, we undertake this approach to explore other new measures available.
+
+The authors further make use of the PolityIV combined score, a composite index of a wide range of political indicators, scaled from -10 to 10, as a measure of democracy. In contrast, we attempt to identify subtle changes in a niche measure of democracy: women political empowerment. We employ the V-Dem women political empowerment (hereon, WPE) index in our analysis which is an average of women civil liberties, women civil society participation and women political participation indices. Development institutions and international organizations such as the World Bank and EU give aid in support of Sustainable Development Goals such as women’s full and effective participation[^3], yet there is limited literature on the effect of aid and women political empowerment. Most of the literature is more region [^4] or country specific[^5].
+
+[^3]: WB, 2023
+
+[^4]: Baliamoune-Lutz, Mina (2013) in MENA
+
+[^5]: Beaman and others, 2011 field experiment in Afghanistan
+
+Driven by the extent of missingness in the outcome variables used by Carnegie and Marinov, we adopt Freedom House and V-Dem. The new set of measures are compatible with our data set particularly because less than 15% of the outcome observations are missing. Given this context, in this paper, we use the instrumental variable approach set up by Carengie and Marinov to estimate the impact of EU aid on democracy and human rights. Particularly, we replicate and extend the findings of C&M using two new measures of democracy and human rights.
+
+# Analysis
+
+## Methodology
+
+Following the method specification in C&M, we treat the endogeneity that exists between foreign aid and human rights and democracy. Following the original authors, we also make use of the rotating presidency of the council of the EU as the instrumental variable in this approach. Specifically, the instrument suggests that a country holding the EU council presidency increases aid allocations to its former colonies. The presidency (as at 2007) was determined by an as-if random alphabetic rotation process which makes it as good as random [^6]. This condition satisfies one of the assumptions OF IV : instrument is as good as random. The other assumption that needs to be satisfied is the exclusion restriction condition.Here, the EU presidency can affect human rights and democracy only through aid disbursements. Thereby, the exclusion restriction assumption is not violated. [^7].
+
+[^6]: Carnegie & Marinov (2017)
+
+[^7]: We carry out robustness checks on both outcomes, regressing the WPE and freedom house indices on the twice lagged Colony indicator. All findings were not statistically distinguishable from zero.
+
+## Data
+
+|                                                |
+|:-----------------------------------------------|
+| ![](figures/Descriptivestats.png){width="626"} |
+
+: Human Rights, Democracy and Foreign Aid, 1987-2009 {#tbl-main}
+
+In @tbl-main, it is evident that the CIRI Human Empowerment Index score and Polity IV score have a considerably lesser number of observations when compared to the Freedom House Rankings and Women Political Empowerment Index. For a total of 2803 observations in our dataset, the outcomes used by original authors have about 30% data points missing. Their respective standard errors are also really high when compared to the new outcome measures.
+
+The panel data covers a 22 year period (1987-2009) and contains 101 EU colonies in 6 regions.As per the motivation of our extension, we use Freedom House’s Freedom in The World Report that tracks civil liberties and political rights. In this measure of human rights, countries are given an ordered rating for freedom status such as “Free, Partly Free and Not Free”. This assignment of freedom status is based on a combined average rating of political and civil rights indicators [^8].Given the inherent ordering in the status of human rights as per the index, the outcome of Free, Partly Free and Not Free has been recoded as 0, 0.5 and 1.
+
+[^8]: "Freedom House" <https://freedomhouse.org/report/freedom-world>
+
+V-Dem's women political empowerment index which serves as our measure for democracy in this study is an average score combined of women civil liberties, women civil society participation, and women political participation indices each ranging from 0 to 1[^9].
+
+[^9]: "V Dem Measures" <https://v-dem.net/data/the-v-dem-dataset/>
+
+Using the instrumental variable model devised in the original paper, we estimate the following model: $$DV_{it'} = \beta_{0} + \beta_{1}log(ODA)_{i,(t - 1)} + \beta_{2}X_{i,(t - 1)} + \eta_{i} + \theta_{t} + \epsilon_{it},$$ {#eq-1} where $DV_{it'}$ are the new measures of rights and democracy for country *i* in years *t’*. $log(ODA)_{i, (t-1)}$ is the logged net EU official development assistance in year *t-1*. $X_{i, (t-2)}$ represents the covariates that are twice lagged to avoid post treatment bias. $\eta_{i}$ and $\theta_{t}$ represent the country and period fixed effects.
+
+As a consequence of the randomness of the EU council presidency, the former colonies are also determined at random. As in C&M, we use this source of randomness to deal with endogeneity through the following first stage regression: $$\text{log(ODA)}_{it} = \beta_{0} + \beta_{1}\text{Colony}_{i,(t - 2)2} + \eta_{i} + \theta_{t} + \epsilon_{it}, $$ [^10]
+
+[^10]: where Colony(t-2) is an indicator variable for if a country is a former colony of the EU Council presidency in the second six months of year t-2 when the budget was decided. The coefficients from the first stage regression give the predicted values for logged ODA in t-1. These predicted values are then used to determine the effect of aid on the outcomes using the first equation.
+
+# Results and Discussion
+
+We replicate the first stage regression in the Carnegie and Marinov paper and find a strong and significant effect (at 1% significance level) of $Colony_{i, (t-2)2}$ on $\text{log(ODA)}_{it}$. We further replicate the authors’ second stage findings in Table 2, columns (5-8) and present the results of our own empirical investigations in columns (1-4), detailing the effect of foreign aid on new measures of human rights and democracy. Our estimations improve the number of observations significantly, a result of significant reduction in the overall missingness in the data. We improve the human rights estimations with 2453 observations over 22 years. This is in contrast to the C&M which estimated over 1792 observations in 20 years. In addition, the democracy index is estimated over 2127 observations in 22 years.
+
+|                            |
+|:---------------------------|
+| ![](figures/Mainstats.png) |
+
+: Two-Stage Least Squares Estimates of Effects of Logged Foreign Aid in Year ${t - 1}$ from the European Community on Dependent Variables Averaged over Years ${t}$ through ${t + 3}$ {#tbl-main}
+
+## Human Rights
+
+As highlighted by Carnegie and Marinov, improvements in human rights and democracy take time to appear. However, human rights conditions may improve a lot faster than democracy because these changes can be implemented a lot quicker and are independent of electoral cycles[^11].In line with the original analysis, the dependent variables are averaged over 4 years from year *t* through *t+3*. Column (1) of the table displays the effects on the freedom house index without the covariates and column (2) shows the covariate adjusted estimate of effects of $\text{log(ODA)}_{it}$.
+
+[^11]: Carnegie & Marinov (2017)
+
+We find that the effect of foreign aid is positive and significant in models (1) and (2). Column (1) reports that a 1% increase in aid disbursed in *t-1* is associated with a 0.11 percentage point increase in the probability that a country moves up by one status in the Freedom House report at time *t*. Columns (5) and (6) are replications of the CIRI index effect. C&M find that as aid increases by 1% it is then associated with a 0.01 increase in average human empowerment index score. In this case when covariates are included in the regression, the estimates are still approximately the same and significant. We see that as aid increases by 1% there is again a 0.11 percentage point increase in average human rights status when controlled for the various covariates. Similarly, the authors also estimate a value of 1.705.This comparison shows us that estimates do not vary significantly with the inclusion of covariates- an observation highlighted by the authors as well. This could be explained by the as if random assignment of the instrument which takes care of the endogeneity issue. The results using both the measures of human rights are significant. In this case, the Freedom House status is significant at a p value of 0.19 and has a standard error of 0.08. The 0.11 percentage point increase is associated with a 95% CI of \[0.04, 0.4\]. This is a fairly tight interval indicating the precision of the estimates. While indices such as CIRI and PolityIV give countries a score on a continuous scale based on their human rights and democracy statuses, Freedom House uses an inherent ordering and rates countries. Even though the former tends to capture more subtle changes and nuances in the data, the inherent ordering based on ratings gives us a sense of the probability of jumps across the rating as a result of foreign aid. This latter information is helpful to understand the likelihood of significant shifts in the human rights ratings of countries. Furthermore, we also take a look at the year by year effects of foreign using the unaveraged ratings of human rights statuses in years *t* through *t + 3*. @fig-example shows that the effects of foreign aid on human rights using Freedom House peaks immediately at year *t + 1* and then starts to decline. This shows the almost immediate effect nature of human rights status changes. On the other hand, CIRI Human Empowerment Index in the paper starts demonstrating effects almost immediately and then starts to decline gradually.
+
+![Estimated Effects of Logged Foreign Aid in Year ${t - 1}$ on CIRI and Freedom Ratings Index in Years $t$ through ${t + 5}$](figures/Secondplot.png){width="70%"}
+
+## Democracy
+
+In column (1), we estimate the non-covariate adjusted effect of logged EU aid in t-1 on WPE in time t. We find a significant effect of EU aid on women political empowerment (SE = 0.000, p \< 0.05) such that a 1 percentage increase in EU aid is associated with a 0.04 percentage point increase in women empowerment. In column (2), we adjust our results for covariates and find a 0.036 percentage point increase in WPE as a result of a 1 percent increase in EU aid (SE = 0.014, p \< 0.05). We note that the inclusion of covariates does not substantively change our estimate. However, in the Carnegie and Marinov paper, the inclusion of covariates significantly reduces the Polity estimate from 2.031 to 1.337. We include the same covariates as in Carnegie and Marinov (2017) [^12]. We attempt to include average years of education (female) in our analysis but found no significant index to include in our model due to a large amount of missingness across various indicators averaging over 87%[^13]. Our estimates in comparison to the Carnegie and Marinov (2017) paper are relatively small. We posit that this difference is due to the small yet consequential group that women (in terms of democracy) present. In addition, the WPE index we make use of is an average of three indices (ranging from 0 to 1) while the authors make use of an index that ranges from -10 to 10. The significance of our estimate also points to the potential impact larger aid allocations could have on women political empowerment. We analyze the WPE effect further, turning to the year-on-year effects of EU aid on women political empowerment. Here, we make use of the pure WPE scores, unaveraged between years t and t+3. We find that the effect is significant through t to t + 2 and dissipates after year t + 3. The effect peaks in t + 1 and sharply declines the year after. This follows a trajectory similar to the Polity IV score in the Carnegie & Marinov paper. In contrast however, Polity peaks in year t +3 and dissipates after t + 5. The dissipation effect arrives faster for WPE than for polity. This signals to the short and temporary effect of aid on WPE. We most likely do not see a prolonged effect due to the patrilineal nature of most developing countries [@berlin2023].
+
+[^12]: logged GDP, logged GDP per capita, logged exports, logged imports, foreign direct investment (FDI), petroleum imports (percent GDP), average education attainment (male), number of democracies in the region and religiosity
+
+[^13]: : WDI (women related education indicators) see appendix
+
+![Estimated Effects of Logged Foreign Aid in Year ${t - 1}$ on V-Dem and PolityIV Index in Years $t$ through ${t + 5}$](figures/Firstplot.png){width="70%"}
+
+# Conclusion
+
+We conduct our research on the premise of missingness in the outcome variables and on identifying niche (and otherwise subtle) effects of aid on human rights and democracy. Our findings suggest that foreign aid has a positive and significant effect even on the alternate measures of democracy and human rights explored in this study. Also, it is important to highlight that despite the missingness, foreign aid seemed to have had a significant impact on CIRI and PolityIV scores, the measures that were originally used by the authors. This goes on to show the strength of the instrument used by Carnegie and Marinov. Furthermore, we observe that there is a significant spike in the human rights rating improvements we measure followed by a sharp decline that indicates its short lived nature. For women empowerment index, aid positively impacts the index in years t+1 and begins to decline, reversing to status quo. In general, the effect of aid on human rights reform is immediate whereas democracy reform effects are delayed across all indices analysed.
+
+::: {#refs}
+@article{knack2004, title={Does Foreign Aid Promote Democracy?}, author={Knack, Stephen}, journal={International Studies Quarterly}, volume={48}, number={1}, pages={251--266}, year={2004}, publisher={Oxford Academic} }
+
+@article{savuntirone2011, title={Foreign Aid, Democratization, and Civil Conflict: How Does Democracy Aid Affect Civil Conflict? }, author={Savun, Burcu and Tirone, Daniel}, journal={American Journal of Political Science}, volume={55}, number={2}, pages={233--246}, year={2011}, publisher={Midwest Political Science Association} }
+
+@article{cm2017, title={Foreign Aid, Human Rights, and Democracy Promotion: Evidence from a Natural Experiment }, author={Allison, Carnegie and Nikolay, Marinov}, journal={American Journal of Political Science}, volume={61}, number={3}, pages={671--683}, year={2017}, publisher={Midwest Political Science Association} }
+
+@article {mavridis2014, author = {Dimitris Mavridis and Anna Chaimani and Orestis Efthimiou and Stefan Leucht and Georgia Salanti}, title = {Addressing missing outcome data in meta-analysis}, volume = {17}, number = {3}, pages = {85--89}, year = {2014}, publisher = {Royal College of Psychiatrists} }
+
+@article{delsartoandschumacher2011, author = {Raffaella Del Sarto and Tobias Schumacher}, title = {From Brussels with love: leverage, benchmarking, and the action plans with Jordan and Tunisia in the EU's democratization policy}, journal = {Democratization}, volume = {18}, number = {4}, pages = {932-955}, year = {2011}, publisher = {Routledge} }
+
+@article{berlin2023, author = {Maria Perrotta Berlin, Evelina Bonnier and Anders Olofsgård}, title = {Foreign Aid and Female Empowerment}, journal = {The Journal of Development Studies}, volume = {0}, number = {0}, pages = {1-23}, year = {2023}, publisher = {Routledge} }
+:::
+
+# Appendix {.appendix}
+
+![Robustness Checks of the Effect of Colony on Freedom House (1) and WPE (2)](figures/robustness.png){width="27%"}
+
+![Missingness in average female education (which we do not include in our model)](figures/missinged.png){width="60%"}
+
+![Effect of EU Aid on the Unaveraged](figures/unaveraged.png){width="60%"}
